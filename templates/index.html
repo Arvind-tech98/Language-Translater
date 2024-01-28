@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Translator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .translated-text {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Language Translator</h2>
+
+    <form method="post" action="{{ url_for('translate') }}">
+        <label for="text">Text:</label>
+        <input type="text" name="text" id="text" placeholder="Enter text" required>
+
+        <label for="language">Language:</label>
+        <input type="text" name="language" id="language" placeholder="Enter language code" required>
+
+        <button type="submit">Translate</button>
+    </form>
+
+    {% if translated_text %}
+    <div class="translated-text">
+        <strong>Translated Text:</strong> {{ translated_text }}
+    </div>
+    {% endif %}
+
+</body>
+</html>
